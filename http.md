@@ -8,3 +8,21 @@
   303 将post请求重定向到get请求
   307 不允许post到get的重定向
   308 与301 一样 不允许post到get的重定向
+2. https中间人攻击
+3. http
+  - http/1.x
+    - 链接无法复用，每次都需要经历三次握手与慢启动
+    - http/1.1 虽然有keep-live可以复用一部分连接，但是需要建立多个connection
+    - Head-of-line blocking 第一个包阻塞，达到最大请求数量时
+  - http/2
+    - 二进制传输
+    - 多路复用
+    - Header头部压缩
+    - server push
+      例如服务端可以主动把js和css文件推送给浏览器
+  - http/3
+    http/2使用了多路复用，一个域名下只需要一个TCP连接，如果出现了丢包，整个TCP都需要等待重传
+    - QUIC 基于UDP
+      - 0RTT建连 缓存当前会话的上下文
+  链接：https://blog.fundebug.com/2019/03/07/understand-http2-and-http3/
+  

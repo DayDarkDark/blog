@@ -9,6 +9,7 @@
   307 不允许post到get的重定向
   308 与301 一样 不允许post到get的重定向
 2. https中间人攻击
+  https://juejin.cn/post/6844903604868874247#heading-28
 3. http
   - http/1.x
     - 链接无法复用，每次都需要经历三次握手与慢启动
@@ -23,6 +24,27 @@
   - http/3
     http/2使用了多路复用，一个域名下只需要一个TCP连接，如果出现了丢包，整个TCP都需要等待重传
     - QUIC 基于UDP
-      - 0RTT建连 缓存当前会话的上下文
+      - 0RTT建连 缓存当前会话的·上下文
   链接：https://blog.fundebug.com/2019/03/07/understand-http2-and-http3/
-  
+  ```QUIC```:https://juejin.cn/post/6844904182361636878
+  const PENDING = 'pending'
+MyPromise.prototype.then = function(onFulfilled, onRejected) {
+  const that = this
+  onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : v => v
+  onRejected =
+    typeof onRejected === 'function'
+      ? onRejected
+      : r => {
+          throw r
+        }
+  if (that.state === PENDING) {
+    that.resolvedCallbacks.push(onFulfilled)
+    that.rejectedCallbacks.push(onRejected)
+  }
+  if (that.state === RESOLVED) {
+    onFulfilled(that.value)
+  }
+  if (that.state === REJECTED) {
+    onRejected(that.value)
+  }
+} 

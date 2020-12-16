@@ -58,4 +58,8 @@
 4. hash模式和history模式的区别
   ```hash```模式是依靠```onhashchange```事件（监听location.hash的改变）
   ```history```模式主要是依靠```pushState()```
-5. 
+5. vue3响应式
+  #### reactive
+  - 创建响应式对象
+  #### effect
+  - 副作用

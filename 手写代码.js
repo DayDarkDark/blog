@@ -47,7 +47,7 @@ function sort(array) {
 
 function quickSort(array, left, right) {
   if (left < right) {
-    swap(array, , right)
+    swap(array, 0, right)
     // 随机取值，然后和末尾交换，这样做比固定取一个位置的复杂度略低
     let indexs = part(array, parseInt(Math.random() * (right - left + 1)) + left, right);
     quickSort(array, left, indexs[0]);
@@ -76,3 +76,24 @@ function part(array, left, right) {
   swap(array, right, more);
   return [less, more];
 }
+
+// 
+function deepClone(originobj, map = new WeakMap()) {
+  // 空或者非对象则返回本身
+  if (!originobj || typeof originobj !== 'object') return originobj
+  //  如果这个对象已经被记录则直接返回
+  if (map.get(originobj)) {
+    return map.get(originobj)
+  }
+  let result = Array.isArray(originobj) ? [] : {}
+  map.set(originobj, result)
+  let keys = Object.keys(originobj)
+  console.log(keys)
+  for (let i = 0; i < keys.length; i++) {
+    let key = keys[i]
+    let temp = originobj[key]
+    result[key] = deepClone(temp, map)
+  }
+  return result
+}
+

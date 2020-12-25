@@ -11,4 +11,12 @@ Promise.retry = function(fn, times = 3) {
     }
   })
 }
-``
+```
+```javascript
+  Promise.allSettled (promises) {
+    if (promise.length === 0) return Promise.resolve([])
+    const _promises = promises.map(
+      item => item instanceof Promise ? item : Promise.resolve(item)
+    )
+  }
+```

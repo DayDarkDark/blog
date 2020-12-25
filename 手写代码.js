@@ -88,7 +88,6 @@ function deepClone(originobj, map = new WeakMap()) {
   let result = Array.isArray(originobj) ? [] : {}
   map.set(originobj, result)
   let keys = Object.keys(originobj)
-  console.log(keys)
   for (let i = 0; i < keys.length; i++) {
     let key = keys[i]
     let temp = originobj[key]
@@ -96,4 +95,17 @@ function deepClone(originobj, map = new WeakMap()) {
   }
   return result
 }
+// 并发控制的request
 
+class Request {
+  constructor(maxLimit) {
+    this.maxLimit = maxLimit
+    this.waitingQueue = []
+  }
+  initRequest = reqArr => {
+    this.waitingQueue.push(...reqArr)
+  }
+  next = () => {
+    
+  }
+}

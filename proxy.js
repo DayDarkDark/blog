@@ -26,4 +26,4 @@ Object.defineProperty(proxy, 'name', {
   }
 })
 proxy.name = 'db'
-// console.log(proxy.name)
+console.log(proxy.name)

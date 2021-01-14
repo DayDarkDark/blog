@@ -18,5 +18,13 @@ Promise.retry = function(fn, times = 3) {
     const _promises = promises.map(
       item => item instanceof Promise ? item : Promise.resolve(item)
     )
+    return new Promise(( resolve, reject ) => {
+      const result = []
+      let unsettledPromiseCount = _promises.length
+      _promises.forEach((promise, index) => {
+        promise.then(())
+      })
+    })
+
   }
-```
+```\\

@@ -27,24 +27,5 @@
       - 0RTT建连 缓存当前会话的·上下文
   链接：https://blog.fundebug.com/2019/03/07/understand-http2-and-http3/
   ```QUIC```:https://juejin.cn/post/6844904182361636878
-  const PENDING = 'pending'
-MyPromise.prototype.then = function(onFulfilled, onRejected) {
-  const that = this
-  onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : v => v
-  onRejected =
-    typeof onRejected === 'function'
-      ? onRejected
-      : r => {
-          throw r
-        }
-  if (that.state === PENDING) {
-    that.resolvedCallbacks.push(onFulfilled)
-    that.rejectedCallbacks.push(onRejected)
-  }
-  if (that.state === RESOLVED) {
-    onFulfilled(that.value)
-  }
-  if (that.state === REJECTED) {
-    onRejected(that.value)
-  }
-} 
+  
+

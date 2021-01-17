@@ -27,3 +27,37 @@ Object.defineProperty(proxy, 'name', {
 })
 proxy.name = 'db'
 console.log(proxy.name)
+
+
+let Dep = null 
+function defineReatctive(obj, key, val) {
+  let dep = []
+  Object.defineProperty(obj, key, {
+    get: function () {
+      if (Dep) {
+        deps.push(Dep)
+      }
+      return val
+    },
+    set: function (newVal) {
+      val = newVal
+      deps.forEach(func => func())
+    }
+  })
+}
+// ES5寄生组合式继承
+function Parent(name) {
+  this.name = name
+}
+Parent.prototype.getName = function () {
+  console.log(this.name)
+}
+
+function Child(name, age) {
+  Parent.call(this, name)
+  this.age = age
+}
+
+Child.prototype = Object.create(Parent.prototype)
+
+

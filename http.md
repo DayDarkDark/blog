@@ -26,10 +26,11 @@
     - QUIC 基于UDP
       - 0RTT建连 缓存当前会话的·上下文
   链接：https://blog.fundebug.com/2019/03/07/understand-http2-and-http3/
-<<<<<<< HEAD
   ```QUIC```:https://juejin.cn/post/6844904182361636878
-  
-
-=======
-  ```QUIC```:https://juejin.cn/post/6844904182361636878
->>>>>>> a1058aa89139a04187c5ac83ca37aacc24a2c114
+  4. cookie有哪些字段
+    - name
+    - value
+    - domain
+    - secure https
+    - httponly
+    - samesite: lax/strict/none(csrf)

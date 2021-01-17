@@ -1,57 +1,38 @@
-<<<<<<< HEAD
-function People (name) {
-  let _name = name
-  Object.defineProperty(this, 'name', {
-    get: function() {
-      return _name
-    },
-    set: function(value) {
-      console.log('warn')
-    }
-  })
+function to36(num) {
+  // const pos = 36
+
+  // const target = []
+
+  // while (num >= 1) {
+  //   let one = parseInt(num % pos) 
+  //   target.unshift(one)
+  //   num = parseInt(num / pos) 
+  // }
+
+  // return target
+
+
+  return num.toString(36)
 }
 
-var man = new People("小明");
-man.name = "小刚"  
-console.log(man.name)
-=======
+console.log(to36(889989))
+// 1zg0l
 
-// class People {
-//   get name() {
-//     return this.nn
-//   }
-//   constructor(name) {
-//     this.nn = name
-//   }
+Object.setPrototypeOf(Child.prototype, Parent.prototype)
+Object.setPrototypeOf(Child, Parent)
+Parent.call(this, name)
+
+Parent.call(this, name)
+Child.prototype = Object.create(Parent.prototype)
+
+let pre = 1
+let cur = 1
+let next
+
+for (let i = 3; i < num; i++ ) {
+  next = pre + cur
+  pre = cur
+  cur = next
   
-// }
-
-// Object.defineProperty(People, 'name', {
-//   writable: false,
-//   set:
-// }) 
-
-class People {
-  constructor(name) {
-    this._name = name;
-  }
-
-  set name(name) {
-    console.log("不允许");
-  }
-
-  get name() {
-    return this._name;
-  }
-
-  setName(name) {
-    this._name = name;
-  }
 }
-
-
-let men =  new People('小红')
-men.name = '小白' // 提示不可以修改
-console.log(men)
-// men.setName('小白') // 可修改
->>>>>>> a1058aa89139a04187c5ac83ca37aacc24a2c114
+return cur

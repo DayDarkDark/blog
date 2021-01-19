@@ -1,38 +1,30 @@
-function to36(num) {
-  // const pos = 36
+console.log('script start')
 
-  // const target = []
-
-  // while (num >= 1) {
-  //   let one = parseInt(num % pos) 
-  //   target.unshift(one)
-  //   num = parseInt(num / pos) 
-  // }
-
-  // return target
-
-
-  return num.toString(36)
+async function async1() {
+  await async2()
+  console.log('async1 end')
 }
-
-console.log(to36(889989))
-// 1zg0l
-
-Object.setPrototypeOf(Child.prototype, Parent.prototype)
-Object.setPrototypeOf(Child, Parent)
-Parent.call(this, name)
-
-Parent.call(this, name)
-Child.prototype = Object.create(Parent.prototype)
-
-let pre = 1
-let cur = 1
-let next
-
-for (let i = 3; i < num; i++ ) {
-  next = pre + cur
-  pre = cur
-  cur = next
-  
+async function async2() {
+  console.log('async2 end')
 }
-return cur
+async1()
+
+setTimeout(function() {
+  console.log('setTimeout')
+}, 0)
+
+new Promise(resolve => {
+  console.log('Promise')
+  resolve()
+})
+  .then(function() {
+    console.log('promise1')
+  })
+  .then(function() {
+    console.log('promise2')
+  })
+
+console.log('script end')
+
+// script start console.log('Promise') console.log('script end') console.log('async2 end')
+// console.log('async1 end')console.log('promise1') console.log('promise2')console.log('setTimeout')

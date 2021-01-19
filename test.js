@@ -1,38 +1,32 @@
-function to36(num) {
-  // const pos = 36
-
-  // const target = []
-
-  // while (num >= 1) {
-  //   let one = parseInt(num % pos) 
-  //   target.unshift(one)
-  //   num = parseInt(num / pos) 
-  // }
-
-  // return target
 
 
-  return num.toString(36)
+const a = {'a': 10, 'b.c.d': 11}
+
+function parsesp(obj) {
+  let res = {}
+  o.forEach(key => {
+    if (key.includes('.')) {
+      let temp = key.split('.')
+      let key1 = temp.shift()
+      console.log(o, r, temp)
+      r[key1] = {}
+      parse(temp.join('.'), r[key1])
+      
+    } else {
+      r[key] = obj[key]
+    }
+  })
+  parse(Object.keys(obj), res)
+
+  function parse (o, r) {
+
+    o.forEach(key => {
+
+    })
+  }
+  console.log(res)
+
 }
 
-console.log(to36(889989))
-// 1zg0l
 
-Object.setPrototypeOf(Child.prototype, Parent.prototype)
-Object.setPrototypeOf(Child, Parent)
-Parent.call(this, name)
-
-Parent.call(this, name)
-Child.prototype = Object.create(Parent.prototype)
-
-let pre = 1
-let cur = 1
-let next
-
-for (let i = 3; i < num; i++ ) {
-  next = pre + cur
-  pre = cur
-  cur = next
-  
-}
-return cur
+parsesp(a)

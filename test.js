@@ -1,32 +1,18 @@
+var findLengthOfLCIS = function (n) {
+  if (n.length === 0) return 0
 
+  let d = 0
+  let max= 1
 
-const a = {'a': 10, 'b.c.d': 11}
-
-function parsesp(obj) {
-  let res = {}
-  o.forEach(key => {
-    if (key.includes('.')) {
-      let temp = key.split('.')
-      let key1 = temp.shift()
-      console.log(o, r, temp)
-      r[key1] = {}
-      parse(temp.join('.'), r[key1])
-      
+  for (let i = 1; i < n.length; i++) {
+    if (n[i] > n[i - 1]) {
+      max = Math.max(i - d + 1, max)
     } else {
-      r[key] = obj[key]
+      d = i
     }
-  })
-  parse(Object.keys(obj), res)
-
-  function parse (o, r) {
-
-    o.forEach(key => {
-
-    })
   }
-  console.log(res)
-
+  return max
 }
 
 
-parsesp(a)
+findLengthOfLCIS([0, 3, 4, 17, 2, 8, 6, 10])

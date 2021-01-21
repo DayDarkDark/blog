@@ -34,3 +34,7 @@
     - secure https
     - httponly
     - samesite: lax/strict/none(csrf)
+https: 
+http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html
+http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html
+https://imququ.com/post/optimize-tls-handshake.html

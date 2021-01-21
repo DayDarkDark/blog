@@ -9,3 +9,5 @@ function Child(value) {
 Child.prototype = Object.create(Parent.protorype)
 
 ```
+
+

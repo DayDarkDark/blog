@@ -10,4 +10,18 @@ function fib(n) {
 	return cur
 }
 
-//
+// 最小花费
+var minCostClimbingStairs = function(cost) {
+  
+  let pre = 0
+  let cur = 0
+
+  let sum = 0
+  for (let i =2; i <=cost.length;i++) {
+    sum = Math.min(pre + cost[i - 2], cur + cost[i - 1])
+    console.log(sum)
+    pre = cur
+    cur = sum
+  }
+  return cur
+};

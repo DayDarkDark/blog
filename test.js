@@ -1,30 +1,32 @@
-console.log('script start')
 
-async function async1() {
-  await async2()
-  console.log('async1 end')
-}
-async function async2() {
-  console.log('async2 end')
-}
-async1()
 
-setTimeout(function() {
-  console.log('setTimeout')
-}, 0)
+const a = {'a': 10, 'b.c.d': 11}
 
-new Promise(resolve => {
-  console.log('Promise')
-  resolve()
-})
-  .then(function() {
-    console.log('promise1')
+function parsesp(obj) {
+  let res = {}
+  o.forEach(key => {
+    if (key.includes('.')) {
+      let temp = key.split('.')
+      let key1 = temp.shift()
+      console.log(o, r, temp)
+      r[key1] = {}
+      parse(temp.join('.'), r[key1])
+      
+    } else {
+      r[key] = obj[key]
+    }
   })
-  .then(function() {
-    console.log('promise2')
-  })
+  parse(Object.keys(obj), res)
 
-console.log('script end')
+  function parse (o, r) {
 
-// script start console.log('Promise') console.log('script end') console.log('async2 end')
-// console.log('async1 end')console.log('promise1') console.log('promise2')console.log('setTimeout')
+    o.forEach(key => {
+
+    })
+  }
+  console.log(res)
+
+}
+
+
+parsesp(a)

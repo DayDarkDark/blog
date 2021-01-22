@@ -1,18 +1,33 @@
-var findLengthOfLCIS = function (n) {
-  if (n.length === 0) return 0
+// {a: 1, 'b.c.d':2}
 
-  let d = 0
-  let max= 1
+function pparse(target) {
+  const result = {}
 
-  for (let i = 1; i < n.length; i++) {
-    if (n[i] > n[i - 1]) {
-      max = Math.max(i - d + 1, max)
-    } else {
-      d = i
-    }
+  traverse(Object.keys(target), result)
+
+  function traverse(arr, temp, value) {
+    arr.reduce((obj, key) => {
+      if (key.indexOf('.') > - 1) {
+        const [first, ...rest] = key.split('.')
+        if (!obj[first])obj[first] = {}
+        traverse([rest.join('.')], obj[first], value || target[key])
+      } else {
+        if (value) {
+          obj[key] = value
+        } else {
+          obj[key] = target[key]
+        }
+        
+      }
+      return temp
+    }, temp)
   }
-  return max
+
+  return result
 }
 
-
-findLengthOfLCIS([0, 3, 4, 17, 2, 8, 6, 10])
+console.log(pparse({
+  a: 1,
+  'b.c.d': 2,
+  "b.c.e": 6
+}))

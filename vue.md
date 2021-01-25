@@ -1,5 +1,11 @@
 1. vue的diff策略
   - 只做同级比较，忽略跨级操作
+  - 不是相同节点 isSameNode 为false 
+  - 是相同节点，复用
+    - 如果新node是文字 直接调用dom api
+    - 如果不是，有
+
+
     判断是否值得比较
     vnode属性
     ```javascript
@@ -85,8 +91,130 @@
     - flushScheduleQueue
       - water.before 触发 beforeUpdate 钩子 watcher.run(): 执行watcher中的notify，通知所有依赖项更新UI
       - 触发updated钩子：组件已更新
+```js
+  function _init() {
+    initLiftCycle(vm)
+    initEvent(vm)
+    initRender(vm)
+    callHook('vm', 'beforeCreated')
+    // inject功能
+    initInjection(vm)
+    // props/data/watch/computed/medthods
+    initState(vm)
+    initProvide(vm)
+    callHook(vm, 'Created')
+    // 挂载节点
+    vm.$mount(vm.$options.el)
+  }
 
-树 搜索 
+  // 挂载节点实现
+  function mountComponent(vm) {
+    // 获取render function
+    if (!this.options.render) {
+      let { render } = compileToFunctions()
+      this.options.render = render
+    }
+    callHook('beforeMounted')
+    vdom = vm.render()
+    vm._update(dom)
+    // update： 根据diff出的patch 挂载真实的dom
+    callHook(vm, 'mounted')
+  }
+
+  function queueWatcher(watcher) {
+    nextTick(flusScheduleQueue)
+    for (;;) {
+      // beforeUpdate
+      watcher.before()
+      // 依赖局部更新节点
+      watcher.update()
+      callHook('updated')
+    }
+  }
+
+  Vue.prototype.$deforty = function () {
+    callHook(vm, 'beforeDestory')
+    // 移除自身及子节点
+    remove()
+    // 删除依赖
+    watcher.teardown()
+    // 删除监听
+    
+    vm.$off()
+    // 触发钩子
+    callHook(vm, 'destoryed')
+  }
+
+```
+```js
+let data = { a : 1 }
+observe(data)
+
+new Wacther(data, 'name', updateComponent)
+data.a = 2
+
+function updateComponent() {
+  // patches
+  vm._update()
+}
+
+function observe(obj) {
+  // 遍历对象，使用get/set 重新定义对象的每个属性值
+  Object.keys(obj).map(key => {
+    defineReactibe(obj, key, obj[key])
+  })
+}
+
+function defineReactive(obj, k, v) {
+  if (type(v)== 'object') observe(v)
+
+  let dep = new Dep() 
+  Object.defineProperty(obj, k, {
+    emumerable: true,
+    configurable: true,
+    get: function reactiveGetter() {
+      if (Dep.target) {
+        dep.addSub(Dep.target)
+      }
+      return v
+    },
+    set: function reactiveSetter(newVal) {
+      v = newVal
+      dep.notify()
+    }
+  })
+}
+
+// 依赖收集器
+class Dep {
+  constructor() {
+    this.subs = []
+  }
+  addSub (sub) {
+    this.subs.push(sub)
+  }
+  notify() {
+    this.subs.map(sub => {
+      su.update()
+    })
+  }
+}
+
+Dep.target = null
+
+class Watcher {
+  constructor(obj, key, cb) {
+    Dep.target = this
+    Dep.target = null
+  }
+  addDeo
+}
+
+```
 
 
+1. dom树 -> cssom树
+Layout tree
+遍历生成的dom树节点，并把他们添加到布局树中
+计算布局树节点的坐标位置
 

@@ -86,7 +86,5 @@
       - water.before 触发 beforeUpdate 钩子 watcher.run(): 执行watcher中的notify，通知所有依赖项更新UI
       - 触发updated钩子：组件已更新
 
-树 搜索 
-
-
-
+7. 父子组件生命周期执行顺序
+  - 父beforeCreate-> 父created => 子beforeCreate => 子created => 子beforeCreated => 子 beforeMount => 子mounted => 父mounted

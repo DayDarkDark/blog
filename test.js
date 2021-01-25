@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function myInstanceof(left, right) {
   if (typeof left !== 'object' || left === null) return false
   let proto = Object.getPrototypeOf(left)
@@ -231,3 +232,6 @@ class Wacther {
   }
 }
 
+=======
+https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_Drag_and_Drop_API
+>>>>>>> ccba37d40e6a926a8441c84f5271c5898ad09382

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 function myInstanceof(left, right) {
   if (typeof left !== 'object' || left === null) return false
   let proto = Object.getPrototypeOf(left)
@@ -231,7 +230,22 @@ class Wacther {
     this.gt()
   }
 }
+// star法则
+// 1. 调研能力：调研了 市场上一些ui框架，Element 'mand-mobile' 学习了源码
+// 发现了一些不足
+// 2. 采用 什么 设计理念 
+// 3. 工程化
+// 4. 充分与设计沟通，设计
+// 涉及敏感信息问题,脱敏处理
+// 解决puppter，解耦数据
+// puppter -> 模拟真实用户的答题流程 ->
 
-=======
-https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_Drag_and_Drop_API
->>>>>>> ccba37d40e6a926a8441c84f5271c5898ad09382
+// 性能优化指标
+// 2. 工程化
+// node方向
+// 可视化
+// 工程化
+// native 框架应用
+// 办公协同
+// vdom -> canvas => js CSS
+// https://www.jianshu.com/p/1f1b23f8348f

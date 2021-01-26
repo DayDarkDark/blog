@@ -210,16 +210,8 @@ class Watcher {
   addDeo
 }
 
-<<<<<<< HEAD
-```
+6.
 
-
-1. dom树 -> cssom树
-Layout tree
-遍历生成的dom树节点，并把他们添加到布局树中
-计算布局树节点的坐标位置
-
-=======
 7. 父子组件生命周期执行顺序
   - 父beforeCreate-> 父created => 子beforeCreate => 子created => 子beforeCreated => 子 beforeMount => 子mounted => 父mounted
->>>>>>> ccba37d40e6a926a8441c84f5271c5898ad09382
+

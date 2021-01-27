@@ -1,3 +1,4 @@
+// 实现一个深拷贝
 function deepClone (ori, map = new WeakMap()) {
   // 空或者非对象则返回本身
   if (!ori || typeof ori !== 'object') return ori

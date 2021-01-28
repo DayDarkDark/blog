@@ -23,6 +23,7 @@
     只有key与sel相同才去比较，否则直接替换
   链接: https://github.com/aooy/blog/issues/2
 2. vue3 速度提升
+  对静态模板进行分析，编译生成了`Block Tree`
   - patchFlag 静态标记 vue3 vdom 比较时会忽略静态标签，静态标记值为-1，负整数表示永远不会用作Diff
   - hoistStatic 静态提升 只在页面初始化的时候创建并渲染一次，其余时候不再渲染
   -  cacheHandler 对事件监听函数进行缓存，防止内联监听函数带来的副作用 patchFlag 标记为8
@@ -215,3 +216,6 @@ class Watcher {
 7. 父子组件生命周期执行顺序
   - 父beforeCreate-> 父created => 子beforeCreate => 子created => 子beforeCreated => 子 beforeMount => 子mounted => 父mounted
 
+8 vue3的模板编译优化
+
+https://mp.weixin.qq.com/s?__biz=Mzg5ODA5MzQ2Mw==&mid=2247486839&idx=1&sn=4ab76188080b95162344e093e7c4203a&chksm=c066958ff7111c9982971426cef51f6031d1ae0f5936b58395d8897a6f191cbd5808dabcd8df&scene=132#wechat_redirect

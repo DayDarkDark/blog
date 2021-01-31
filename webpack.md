@@ -1,3 +1,37 @@
+#### 速度分析
+1. 分析
+  `speed-measure-webpack-plugin`
+2. 优化方法
+  1. 使用高版本的wepack和node
+  2. 使用thread-loader
+  3. 预编译资源模块
+    1. 设置`externals` `html-webpack-externals-plugin`
+      将 react react-dom等基础包通过cdn引入，不打入bundle
+    2. 动态链接库
+      Dllplugin
+    3. hard-source-webpack-plugin
+      提供缓存，二次构建显著加快，替代dllplugin
+  4. 缩小构建目标
+    1. 减少文件搜索范围
+      - 优化`resolve.modules`
+      - 优化`resolve.mainFields`
+      - 优化`resolve.extensions`
+    2. 合理使用alias
+    3. noParse
+    4. ingnorePlugin: moment 忽略 ./locale文件
+  
+#### 体积分析
+1. 分析
+  `webpack-bundle-analyzer`
+  1. 分割打包  Bundle Spliting `splitchunksPlugin`
+    - AggressiveSplittingPlugin
+    - AggressiveMergingPlugin
+  2. 代码分割 code spilting
+  3. 压缩代码 terser
+
+
+
+
 webpack流程
 ￼读取配置文件，按命令 初始化配置参数，创建 Compiler 对象；
 ￼调用插件的 apply 方法 挂载插件监听，然后从入口文件开始执行编译；
@@ -46,17 +80,3 @@ tree shaking
 
 commonjs require() 是动态的 基于条件来导入需要的代码
 
-es6 improt语法是完全静态 
-
-
-循环引用 coomonjs es6模块
-
-// 
-url -> 
-
-箭头函数
-https://segmentfault.com/a/1190000015480642
-
-new 报错 try catch
-
-protptype

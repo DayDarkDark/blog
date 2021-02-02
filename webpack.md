@@ -26,9 +26,13 @@
   1. 分割打包  Bundle Spliting `splitchunksPlugin`
     - AggressiveSplittingPlugin
     - AggressiveMergingPlugin
-  2. 代码分割 code spilting
+  2. 代码分割 code spilting 
   3. 压缩代码 terser
 
+#### vite
+1. 首次启动 分析package.json的dependencies,将 cjs等转成 esm
+2. 减少http请求数，提高页面加载性能，vite 将每个依赖单独达成一个esm
+3. 
 
 
 

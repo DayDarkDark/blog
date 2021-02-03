@@ -19,7 +19,6 @@ var minCostClimbingStairs = function(cost) {
   let sum = 0
   for (let i =2; i <=cost.length;i++) {
     sum = Math.min(pre + cost[i - 2], cur + cost[i - 1])
-    console.log(sum)
     pre = cur
     cur = sum
   }

@@ -1,14 +1,15 @@
-function compose(context, next) {
-  let index = -1
-  return dispatch(0)
-  function dispatch(i) {
-    index = i
-    let fn = mi
+function curry(fn, ...args) {
+  const temp = [...args]
+  const real = function(...args) {
+    if (args.length === 0) {
+      fn(...temp)
+    }
+    temp.push(...temp)
+    return real
   }
+  return real
 }
-
-
-
+console.log(curry(1,2)(3)() == 6)
 
 
 

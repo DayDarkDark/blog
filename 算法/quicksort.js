@@ -6,7 +6,6 @@ function sort (arr) {
     // let sentry
     if (left < right) {
       const sentry = partition(left, right)
-      console.log(sentry)
       quickSort(left, sentry - 1)
       quickSort(sentry + 1, right)
     }

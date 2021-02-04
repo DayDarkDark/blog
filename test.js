@@ -1,16 +1,5 @@
-function curry(fn, ...args) {
-  const temp = [...args]
-  const real = function(...args) {
-    if (args.length === 0) {
-      fn(...temp)
-    }
-    temp.push(...temp)
-    return real
-  }
-  return real
-}
-console.log(curry(1,2)(3)() == 6)
 
+console.log(findAll([['a','b'],['m','n'],['0',"1"]]))
 
 
 

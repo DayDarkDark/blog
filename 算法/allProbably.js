@@ -17,24 +17,21 @@ function allProbably(arr) {
   return result
 }
 console.log(allProbably(a))
-// var print = (arrayList) => {
 
-//   var [left, right, ...restArrayList] = arrayList
-
-//   function zip(leftArray, rightArray) {
-//       var res = []
-//       for (var leftLetter of leftArray) {
-//           for (var rightLetter of rightArray) {
-//               res.push(leftLetter + rightLetter)
-//           }
-//       }
-//       return res
-//   }
-
-//   if (restArrayList.length === 0) {
-//       return zip(left, right)
-//   } else {
-//       const newLeftArray = zip(left, right)
-//       return print([newLeftArray, ...restArrayList])
-//   }
-// }
+const findAll = arr => {
+  return arr.reduce((total, current) => {
+    if (!total.length) {
+      return current
+    }
+    if (!current.length) {
+      return total
+    }
+    const result = []
+    for (let i = 0; i < total.length; i++) {
+      for (let j = 0; j < current.length; j++) {
+        result.push(`${total[i]}${current[j]}`)
+      }
+    }
+    return result
+  }, [])
+}

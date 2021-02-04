@@ -1,5 +1,4 @@
 class LazyMan {
-  
   constructor() {
     this.queue = []
   

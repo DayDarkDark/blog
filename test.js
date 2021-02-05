@@ -1,7 +1,6 @@
+var hasPathSum = function(root, targetSum) {
 
-console.log(findAll([['a','b'],['m','n'],['0',"1"]]))
-
-
+};
 
 
 

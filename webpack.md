@@ -31,9 +31,10 @@
 
 #### vite
 1. 首次启动 分析package.json的dependencies,将 cjs等转成 esm
-2. 减少http请求数，提高页面加载性能，vite 将每个依赖单独达成一个esm
+2. 减少http请求数，提高页面加载性能，vite 将每个依赖单独达成一个esm，类似于dllplugin
 3. 
-
+##### vite 实现热更新
+1. vite 通过创建websocket 建立浏览器与服务器建立通信，通过监听文件的改变向客户端发送消息，客户端根据不同的type 进行不同的操作和更新
 
 
 webpack流程

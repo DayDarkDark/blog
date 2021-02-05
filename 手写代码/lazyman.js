@@ -1,17 +1,13 @@
 class LazyMan {
   constructor() {
     this.queue = []
-  
-    Promise.resolve()
-      .then(() => {
-        this.run()
 
+    Promise.resolve()
+      .then(async () => {
+        for (let item of this.queue) {
+          await item
+        }
       })
-  }
-  async run () {
-    for (let i of this.queue) {
-      await i()
-    }
   }
 
   eat(meal) {

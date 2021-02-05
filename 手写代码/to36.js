@@ -10,5 +10,4 @@ function to36(num) {
   }
 
   return target
-  // return num.toString(36)
 }

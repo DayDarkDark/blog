@@ -1,28 +1,23 @@
 1. vue的diff策略
-  - 只做同级比较，忽略跨级操作
-  - 不是相同节点 isSameNode 为false 
-  - 是相同节点，复用
-    - 如果新node是文字 直接调用dom api
-    - 如果不是，有
-
-
-    判断是否值得比较
-    vnode属性
-    ```javascript
-    {
-      el: div
-      tagName: 'DIV'
-      sel: 'div#id.class' // 节点选择器
-    }
-    ```
-    ```javascript
-    function sameVnode(oldVnode, vnode) {
-      return vnode.key === oldVnode.key && vnode.sel === old.sel
-    }
-    ```
-    只有key与sel相同才去比较，否则直接替换
-  链接: https://github.com/aooy/blog/issues/2
+  - 没有旧节点，直接创建新的。
+  - 新旧 vnode 不同，直接销毁旧的，创建新的。
+  - 新旧 vnode 相同，继续比较子节点：
+    其中 vnode 为文本节点，与旧不同则直接更新
+    子节点依旧是新旧之间的比较，只有新节点直接创建，只有旧节点则删除旧的，新旧又不同，开始 diff 核心算法，重点讲解：
+      - while 循环比较新旧子节点：头索引跟头比较，尾跟尾，比完缩减往中间收拢，比较遵从：
+      - 头与头比较，相同则复用不作处理，同时头++，尾、头尾、尾头的目的都是为了复用
+      - 用 key 比较
+      - map 表遍历查找
+      - 剩余节点，批量新增或删除
 2. vue3 速度提升
+  - vdom：创建 vdom 的时候多了个 dynamicChildren 动态节点，patch 的时候只比对动态。
+    vue2 静态节点也会 patch。
+  - vdom：节点变更类型用 patchFlag 细分，用位掩码组合，作为判定更新的依据。
+    vue2 如果是普通节点，会通过内置的update钩子全量进行新旧对比，然后更新
+    如果是component，则会在prepatch阶段进行判断，有变化则会重新触发forceUpdate，造成很多无用的重复对比。
+  - diff 核心变化：用数组 map 记录节点变更的位置以及新增的节点 + 最长子序列（如果递增则位置不变）。
+  - 相同事件缓存不会重新生成。
+
   对静态模板进行分析，编译生成了`Block Tree`
   - patchFlag 静态标记 vue3 vdom 比较时会忽略静态标签，静态标记值为-1，负整数表示永远不会用作Diff
   - hoistStatic 静态提升 只在页面初始化的时候创建并渲染一次，其余时候不再渲染

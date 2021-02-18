@@ -1,3 +1,7 @@
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
 var threeSum = function(nums) {
   const ans = []
   if (nums == null || nums.length < 3) return ans
@@ -25,3 +29,5 @@ var threeSum = function(nums) {
   }
   return ans
 };
+// 时间复杂 O(n * n)
+// 空间复杂度 O(1)

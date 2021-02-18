@@ -23,4 +23,4 @@ var minCostClimbingStairs = function(cost) {
     cur = sum
   }
   return cur
-};
+}

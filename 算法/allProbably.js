@@ -35,3 +35,19 @@ const findAll = arr => {
     return result
   }, [])
 }
+
+
+const findAll = arr => {
+  const result = []
+  const _back = (temp, index, current) => {
+    if (index >= temp.length) {
+      result.push([...current])
+    } else {
+      temp.forEach(item => {
+        current.push(item)
+        _back(temp, index + 1, current)
+        current.pop()
+      })
+    }
+  }
+}
